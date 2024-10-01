@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxjmaukmfemtg"]
+
+[ext_resource type="Script" path="res://Player/player_character.gd" id="1_usuxt"]
+[ext_resource type="Script" path="res://Player/player_visuals.gd" id="2_8kssp"]
+[ext_resource type="Texture2D" uid="uid://cpxyllaepm2ti" path="res://icon.svg" id="2_lecb2"]
+[ext_resource type="Script" path="res://Levels/input_gatherer.gd" id="3_7858y"]
+[ext_resource type="PackedScene" uid="uid://bvv1xh6pefecg" path="res://Player/player_model.tscn" id="5_31yrj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nyign"]
+radius = 64.0
+height = 128.0
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_usuxt")
+
+[node name="Visuals" type="Node2D" parent="."]
+script = ExtResource("2_8kssp")
+
+[node name="Sprite" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_lecb2")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_nyign")
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("3_7858y")
+
+[node name="Model" parent="." instance=ExtResource("5_31yrj")]

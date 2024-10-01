@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://dj78puff4tbms"]
+
+[ext_resource type="Texture2D" uid="uid://cpxyllaepm2ti" path="res://icon.svg" id="1_c0n37"]
+[ext_resource type="Script" path="res://Player/player_character.gd" id="2_y7mi0"]
+[ext_resource type="Script" path="res://Levels/input_gatherer.gd" id="3_d8bek"]
+[ext_resource type="Script" path="res://Levels/player_model.gd" id="4_8qs31"]
+[ext_resource type="Script" path="res://Player/States/idle.gd" id="5_0hjf2"]
+[ext_resource type="Script" path="res://Player/States/run.gd" id="6_5b37m"]
+[ext_resource type="Script" path="res://Player/States/jump.gd" id="7_juisf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vachj"]
+size = Vector2(1168, 128)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nyign"]
+radius = 64.0
+height = 128.0
+
+[node name="ProtoLevel" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(577, 585)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_vachj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+scale = Vector2(10, 1)
+texture = ExtResource("1_c0n37")
+
+[node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+script = ExtResource("2_y7mi0")
+
+[node name="Visuals" type="Sprite2D" parent="PlayerCharacter"]
+texture = ExtResource("1_c0n37")
+
+[node name="Collider" type="CollisionShape2D" parent="PlayerCharacter"]
+shape = SubResource("CapsuleShape2D_nyign")
+
+[node name="Input" type="Node" parent="PlayerCharacter"]
+script = ExtResource("3_d8bek")
+
+[node name="Model" type="Node" parent="PlayerCharacter"]
+script = ExtResource("4_8qs31")
+
+[node name="Idle" type="Node" parent="PlayerCharacter/Model"]
+script = ExtResource("5_0hjf2")
+
+[node name="Run" type="Node" parent="PlayerCharacter/Model"]
+script = ExtResource("6_5b37m")
+
+[node name="Jump" type="Node" parent="PlayerCharacter/Model"]
+script = ExtResource("7_juisf")

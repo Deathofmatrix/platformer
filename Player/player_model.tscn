@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvv1xh6pefecg"]
+
+[ext_resource type="Script" path="res://Levels/player_model.gd" id="1_yhq2y"]
+[ext_resource type="Script" path="res://Player/States/idle.gd" id="2_ysbrk"]
+[ext_resource type="Script" path="res://Player/States/run.gd" id="3_qg331"]
+[ext_resource type="Script" path="res://Player/States/jump.gd" id="4_3eggl"]
+[ext_resource type="Script" path="res://Player/States/sprint.gd" id="5_js4tm"]
+
+[node name="Model" type="Node"]
+script = ExtResource("1_yhq2y")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_ysbrk")
+
+[node name="Run" type="Node" parent="."]
+script = ExtResource("3_qg331")
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("4_3eggl")
+
+[node name="Sprint" type="Node" parent="."]
+script = ExtResource("5_js4tm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
